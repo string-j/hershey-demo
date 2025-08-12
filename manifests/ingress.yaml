@@ -1,0 +1,29 @@
+# apiVersion for Ingress is 'networking.k8s.io/v1'.
+apiVersion: networking.k8s.io/v1
+# kind specifies the type of Kubernetes object.
+kind: Ingress
+# metadata contains the ingress's name and annotations.
+metadata:
+  name: hersheys-webapp-ingress
+  annotations:
+    # This annotation is specific to the NGINX Ingress controller.
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # rules define how to route external traffic to services.
+  rules:
+  # The host (domain name) that this rule applies to.
+  - host: hersheys.example.com
+    http:
+      paths:
+      # A path-based rule.
+      - path: /
+        # 'Prefix' means it matches any path that starts with '/'.
+        pathType: Prefix
+        # backend specifies where to send the traffic.
+        backend:
+          service:
+            # The name of the Service to route to.
+            name: hersheys-webapp-service
+            port:
+              # The port on the Service to connect to.
+              number: 80

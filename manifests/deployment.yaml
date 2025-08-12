@@ -1,0 +1,33 @@
+# apiVersion specifies the Kubernetes API version to use. 'apps/v1' is the standard for Deployments.
+apiVersion: apps/v1
+# kind specifies the type of Kubernetes object.
+kind: Deployment
+# metadata contains data that helps uniquely identify the object, like its name.
+metadata:
+  name: hersheys-webapp-deployment
+  labels:
+    app: hersheys-webapp
+spec:
+  # replicas specifies the desired number of pods to run. Running 2 provides redundancy.
+  replicas: 2
+  # selector tells the Deployment which pods to manage.
+  selector:
+    matchLabels:
+      app: hersheys-webapp
+  # template is the blueprint for the pods that the Deployment will create.
+  template:
+    metadata:
+      # The pods get labeled to match the selector.
+      labels:
+        app: hersheys-webapp
+    spec:
+      containers:
+        # The name of the container running in the pod.
+      - name: hersheys-webapp-container
+        # The Docker image to use. Make sure this matches the tag you used when building.
+        image: hersheys-webapp:latest
+        # imagePullPolicy tells Kubernetes when to pull the image. 'IfNotPresent' uses the local image if it exists.
+        imagePullPolicy: IfNotPresent
+        # The port the application listens on inside the container.
+        ports:
+        - containerPort: 8080

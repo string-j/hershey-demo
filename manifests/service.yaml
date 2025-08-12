@@ -1,0 +1,20 @@
+# apiVersion 'v1' is used for core objects like Services.
+apiVersion: v1
+# kind specifies the type of Kubernetes object.
+kind: Service
+# metadata contains the service's name.
+metadata:
+  name: hersheys-webapp-service
+spec:
+  # selector tells the Service which pods to send traffic to. It matches the pods' labels.
+  selector:
+    app: hersheys-webapp
+  # ports defines how the Service exposes the pods' ports.
+  ports:
+    - protocol: TCP
+      # The port that the Service will be available on within the cluster.
+      port: 80
+      # The port on the pods that the traffic should be forwarded to.
+      targetPort: 8080
+  # type 'ClusterIP' exposes the service only within the cluster. This is the default.
+  type: ClusterIP
