@@ -25,7 +25,7 @@ spec:
         # The name of the container running in the pod.
       - name: hersheys-webapp-container
         # The Docker image to use. Make sure this matches the tag you used when building.
-        image: public.ecr.aws/b6b2h8s5/hershey-demo/webapp-pub-image:2
+        image: public.ecr.aws/b6b2h8s5/hershey-demo/webapp-app-co:1
         # imagePullPolicy tells Kubernetes when to pull the image. 'IfNotPresent' uses the local image if it exists.
         imagePullPolicy: IfNotPresent
         # The port the application listens on inside the container.
