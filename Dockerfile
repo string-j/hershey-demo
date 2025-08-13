@@ -1,5 +1,5 @@
 # Use the official Tomcat image from Docker Hub
-FROM tomcat:11.0.10-jdk21-temurin
+FROM dp.apps.rancher.io/containers/apache-tomcat:11.0.10-openjdk21
 
 # Set a label for the maintainer (optional)
 LABEL maintainer="Your Name <youremail@example.com>"
