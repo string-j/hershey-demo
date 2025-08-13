@@ -1,5 +1,5 @@
 # Use the official Tomcat image from Docker Hub
-FROM tomcat:10.1-jdk11-temurin
+FROM tomcat:11.0.10-jdk21-temurin
 
 # Set a label for the maintainer (optional)
 LABEL maintainer="Your Name <youremail@example.com>"
